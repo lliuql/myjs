@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<button>测试1</button>
+	<button>测试2</button>
+	<button>测试3</button>
+	<script>
+		window.onload = function () {
+			let buttons = document.getElementsByTagName('button')
+			console.log(buttons)
+			// buttons.length多次调用会浪费性能，所以写在前面
+			for (var i = 0,length = buttons.length ; i < length; i++) {
+				var btn = buttons[i]
+
+				btn.onclick = 	function () {
+						console.log(`我是btn${i+1}`)
+				}
+			}
+		}
+
+		// 闭包解决 普通函数
+		// window.onload = function () {
+		// 	let buttons = document.getElementsByTagName('button')
+		// 	console.log(buttons);
+		// 	// buttons.length多次调用会浪费性能，所以写在前面
+		// 	for (var i = 0,length = buttons.length ; i < length; i++) {
+		// 		var btn = buttons[i]
+
+		// 		function bindBtn() {
+		// 			var j = i
+		// 			function myclick() {
+		// 				console.log(`我是btn${j+1}`);
+		// 			}
+		// 			return myclick
+		// 		}
+				
+		// 		btn.onclick = bindBtn()
+		// 	}
+		// }
+
+		// 匿名函数自调用
+		// window.onload = function () {
+		// 	let buttons = document.getElementsByTagName('button')
+		// 	console.log(buttons)
+		// 	// buttons.length多次调用会浪费性能，所以写在前面
+		// 	for (var i = 0,length = buttons.length ; i < length; i++) {
+		// 		var btn = buttons[i]
+		// 		;(function(i) {
+		// 			btn.onclick = function () {
+		// 				console.log(`我是btn${i+1}`)
+		// 			}
+		// 		}) (i)
+				
+		// 	}
+		// }
+
+		
+	</script>
+</body>
+</html>
